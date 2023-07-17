@@ -1,0 +1,14 @@
+version: '3'
+networks:
+    codo:
+services:
+    codo-admin-f:
+        restart: unless-stopped
+        image: codo_admin_f_image
+        networks:
+                - codo
+        volumes:
+          #- ./default.conf:/etc/nginx/conf.d/default.conf
+          - /sys/fs/cgroup:/sys/fs/cgroup
+        ports:
+          - "8009:80"
