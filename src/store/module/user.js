@@ -133,7 +133,7 @@ export default {
                 if (process.env.NODE_ENV === 'development' && !window.__POWERED_BY_QIANKUN__) {
                     resolve([])
                 }
-                Authorization().then(res => {
+                authorization().then(res => {
                     if (parseInt(res.status) === 401) {
                         commit('setToken', '')
                         commit('setAccess', [])

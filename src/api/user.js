@@ -2,7 +2,7 @@ import axios from '@/libs/api.request'
 
 export const login = (data) => {
   return axios.request({
-    url: '/api/p/accounts/login/',
+    url: '/api/p/v4/login/',
     method: 'post',
     data
   })
@@ -17,7 +17,7 @@ export const logout = () => {
 
 export const authorization = () => {
   return axios.request({
-    url: '/api/p/accounts/authorization/',
+    url: '/api/p/v4/authorization/',
     method: 'get'
   })
 }

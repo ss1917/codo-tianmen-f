@@ -5,6 +5,7 @@ import { forEach, hasOneOf, objEqual } from '@/libs/tools'
 const { title, cookieExpires, useI18n } = config
 
 export const TOKEN_KEY = 'auth_key'
+export const IS_LOGIN = 'auth_key_login'
 
 export const setToken = (token) => {
     Cookies.set(TOKEN_KEY, token, { expires: cookieExpires || 1 })
@@ -15,9 +16,26 @@ export const setToken = (token) => {
 }
 
 export const getToken = () => {
-    const token = Cookies.get(TOKEN_KEY)
-    if (token) return token
-    else return false
+  if (Cookies.get(TOKEN_KEY)) {
+    return Cookies.get(TOKEN_KEY)
+  }
+  if (localStorage.getItem(TOKEN_KEY)) {
+    return localStorage.getItem(TOKEN_KEY)
+  } else {
+    return false
+  }
+}
+
+export const getISLOGIN = () => {
+  if ( Cookies.get(IS_LOGIN)) {
+    return Cookies.get(IS_LOGIN)
+  }
+  if (Cookies.get(TOKEN_KEY)) {
+    return Cookies.get(TOKEN_KEY)
+  }
+  if (localStorage.getItem(TOKEN_KEY)) {
+    return localStorage.getItem(TOKEN_KEY)
+  }
 }
 
 export const hasChild = (item) => {

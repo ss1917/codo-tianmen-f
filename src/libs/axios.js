@@ -1,7 +1,8 @@
 import axios from 'axios'
 import { Notice } from 'view-design'
 import Cookies from 'js-cookie'
-import { setToken } from '@/libs/util'
+import { gotoUnAuth } from "@/libs/qiankun"
+import { setToken, getToken } from '@/libs/util'
 // import config from '@/config'
 // const { isHttps } = config
 
@@ -11,13 +12,15 @@ class HttpRequest {
         this.queue = {}
     }
     getInsideConfig() {
-        const config = {
+        let config = {
             baseURL: this.baseUrl,
             headers: {
                 "X-CSRFToken": Cookies.get('csrftoken'),
                 'X-Xsrftoken': Cookies.get('_xsrf'),
-                // 'auth-key': Cookies.get('auth_key')
             }
+        }
+        if (getToken()) {
+            config.headers['auth-key'] = getToken()
         }
         return config
     }
@@ -46,9 +49,14 @@ class HttpRequest {
             return { data, status, request }
         }, error => {
             this.destroy(url)
-            if (error.response.status === '401' || error.response.status === 401) {
-                setToken('')
-                location.reload()
+             if (error.response.status === '401' || error.response.status === 401) {
+              console.info('------------',window.__POWERED_BY_QIANKUN__)
+                if (window.__POWERED_BY_QIANKUN__) {
+                    gotoUnAuth()
+                } else {
+                    clearToken()
+                    location.reload()
+                }
             } else if (error.response.status === 403) {
                 Notice.warning({
                     title: '你没有权限，请联系管理员',
