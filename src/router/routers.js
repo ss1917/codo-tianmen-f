@@ -18,46 +18,102 @@ import parentView from '@/components/parent-view'
  */
 
 export const routerMap = [
-{
-  path: '/gateway',
-  name: 'gateway',
-  component: Main,
-  meta: {
-    icon: 'md-contacts',
-    title: '网关'
-  },
-  children: [{
-    path: 'routes',
-    name: 'gwRoutes',
+  // {
+  //   path: '/gateway',
+  //   name: 'gateway',
+  //   component: Main,
+  //   meta: {
+  //     icon: 'md-contacts',
+  //     title: '网关'
+  //   },
+  //     children: [{
+  //       path: '/gw-routes',
+  //       name: 'gwRoutes',
+  //       meta: {
+  //         icon: 'md-notifications',
+  //         title: '路由配置'
+  //       },
+  //       component: () =>  import ('@/view/gateway/routes.vue')
+  //     }, {
+  //       path: '/gw-services',
+  //       name: 'gwServices',
+  //       meta: {
+  //         icon: 'md-notifications',
+  //         title: '服务注册'
+  //       },
+  //       component: () =>  import ('@/view/gateway/services.vue')
+  //     },
+  //     {
+  //       path: '/gw-api-permission',
+  //       name: 'apiPermission',
+  //       meta: {
+  //         icon: 'md-notifications',
+  //         title: 'API权限'
+  //       },
+  //       component: () =>  import ('@/view/gateway/api-rule.vue')
+  //     }
+  //   ]
+  // },
+  {
+    path: '/gateway',
+    name: 'gateway-r',
+    component: Main,
     meta: {
-      icon: 'md-notifications',
-      title: '路由配置'
+      icon: 'md-contacts',
+      title: '网关'
     },
-    component: () =>
-                    import ('@/view/gateway/routes.vue')
-  }, {
-    path: 'services',
-    name: 'gwServices',
-    meta: {
-      icon: 'md-notifications',
-      title: '服务注册'
-    },
-    component: () =>
-                    import ('@/view/gateway/services.vue')
+    children: [
+        {
+        path: '/routes',
+        name: 'gwRoutes',
+        meta: {
+          icon: 'md-notifications',
+          title: '路由配置'
+        },
+        component: () =>  import ('@/view/gateway/routes.vue')
+      }
+    ]
   },
   {
-    path: 'api-permission',
-    name: 'apiPermission',
+    path: '/gateway',
+    name: 'gateway-s',
+    component: Main,
     meta: {
-      icon: 'md-notifications',
-      title: 'API权限'
+      icon: 'md-contacts',
+      title: '网关'
     },
-    component: () =>
-                    import ('@/view/gateway/api-rule.vue')
-  }
-  ]
-}
-
+      children: [
+        {
+        path: '/services',
+        name: 'gwServices',
+        meta: {
+          icon: 'md-notifications',
+          title: '服务注册'
+        },
+        component: () =>  import ('@/view/gateway/services.vue')
+      }
+    ]
+  },
+  {
+    path: '/gateway',
+    name: 'gateway-a',
+    component: Main,
+    meta: {
+      icon: 'md-contacts',
+      title: '网关'
+    },
+      children: [
+          {
+        path: '/api-permission',
+        name: 'apiPermission',
+        meta: {
+          icon: 'md-notifications',
+          title: 'API权限'
+        },
+        component: () =>  import ('@/view/gateway/api-rule.vue')
+      }
+    ]
+  },
 ]
 export const routes = [{
   path: '/login/:c_url',
