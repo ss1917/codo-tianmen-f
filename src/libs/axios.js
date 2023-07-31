@@ -8,7 +8,7 @@ import { setToken, getToken } from '@/libs/util'
 
 class HttpRequest {
     constructor(baseUrl = baseURL) {
-        this.baseUrl = baseUrl
+        // this.baseUrl = baseUrl
         this.queue = {}
     }
     getInsideConfig() {
