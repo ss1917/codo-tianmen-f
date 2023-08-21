@@ -51,7 +51,7 @@ class HttpRequest {
             this.destroy(url)
              if (error.response.status === '401' || error.response.status === 401) {
               console.info('------------',window.__POWERED_BY_QIANKUN__)
-                if (window.__POWERED_BY_QIANKUN__) {
+                if (window.__POWERED_BY_QIANKUN__ ||  process.env.NODE_ENV !== 'development') {
                     gotoUnAuth()
                 } else {
                     clearToken()

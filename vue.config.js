@@ -48,16 +48,16 @@ module.exports = {
       'Access-Control-Allow-Origin': '*',
     },
     proxy: {
-      // '/mg/': {
-      //   target: 'http://10.241.0.40:8888/api/',
-      //   changeOrigin: true,
-      // },
-      '^/api/p/': {
-        target: 'http://10.241.8.14:8010',
+      '^/api/': {
+        target: 'http://10.241.0.40:8888/',
         changeOrigin: true,
-         pathRewrite: {'^/api/p': ''}
-        // headers: { Authorization: "" },
       },
+      // '^/api/p/': {
+      //   target: 'http://10.241.8.14:8010',
+      //   changeOrigin: true,
+      //    pathRewrite: {'^/api/p': ''}
+      //   // headers: { Authorization: "" },
+      // },
       '^/api/admin/': {
         target: 'http://10.241.0.40:8888',
         changeOrigin: true,
